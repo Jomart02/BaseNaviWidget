@@ -1,0 +1,3 @@
+[submodule "NavyComponents"]
+	path = NavyComponents
+	url = https://github.com/Jomart02/NavyComponents.git
