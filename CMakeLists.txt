@@ -19,6 +19,8 @@ set(HDRS
 
 find_package(Qt6 COMPONENTS Widgets REQUIRED)
 
+message("Building " ${TARGET})
+
 add_library(${PROJECT_NAME} SHARED ${HDRS})
 # Определяем макрос BASENAVIWIDGET_LIBRARY только при компиляции библиотеки
 target_compile_definitions(${PROJECT_NAME} PRIVATE BASENAVIWIDGET_LIBRARY)
