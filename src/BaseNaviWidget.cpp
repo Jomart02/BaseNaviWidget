@@ -17,6 +17,9 @@ void BaseNaviWidget::stopSend(){
     if(timer->isActive())
         timer->stop();
 }
+bool BaseNaviWidget::isActive(){
+    return timer->isActive();
+}
 
 void BaseNaviWidget::onTimeout(){
     QStringList data = getNavigationData();

@@ -18,7 +18,7 @@ public:
     explicit BaseNaviWidget(QWidget *parent = nullptr);
     ~BaseNaviWidget();
 public:
-
+    bool isActive();
     /// @brief Запуск отправки данных
     void startSend();
     /// @brief Остановка оправки данных
