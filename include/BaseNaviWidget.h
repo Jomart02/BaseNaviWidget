@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include <QtPlugin>
+#include <QTimer>
 
 #ifdef BASENAVIWIDGET_LIBRARY
 #define BASENAVIWIDGET_EXPORT Q_DECL_EXPORT
@@ -13,17 +14,33 @@ class BASENAVIWIDGET_EXPORT BaseNaviWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit BaseNaviWidget(QWidget *parent = nullptr) : QWidget(parent){
+    explicit BaseNaviWidget(QWidget *parent = nullptr);
+    ~BaseNaviWidget();
+public:
 
-    }
-    ~BaseNaviWidget(){
-
-    }
+    /// @brief Запуск отправки данных
+    void startSend();
+    /// @brief Остановка оправки данных
+    void stopSend();
+    /// @brief Иконка плагина
+    /// @return QIcon 
+    virtual QIcon icon() const = 0;
+    /// @brief Название плагина
+    /// @return QString 
+    virtual QString name() const = 0;
+    /// @brief Описание плагина 
+    /// @return QString 
+    virtual QString description() const = 0;
+signals:
+    void sendData(QStringList data);
 public slots:
-    virtual void setText() = 0;
-
+    virtual QStringList getNavigationData() = 0;
+private slots:
+    void onTimeout();
+protected:  
+    int tickInterval = 1000;
 private:
-
+    QTimer *timer = nullptr;
 };
 
 // Объявляем интерфейс для плагинов
