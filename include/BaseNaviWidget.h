@@ -33,7 +33,7 @@ public:
     virtual QString description() const = 0;
 signals:
     void sendData(QStringList data);
-public slots:
+protected slots:
     virtual QStringList getNavigationData() = 0;
 private slots:
     void onTimeout();
