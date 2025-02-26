@@ -16,6 +16,7 @@ class BASENAVIWIDGET_EXPORT BaseNaviWidget : public QWidget
     Q_OBJECT
 public:
     explicit BaseNaviWidget(QWidget *parent = nullptr);
+    explicit BaseNaviWidget(int timerInterval = 1000,QWidget *parent = nullptr);
     ~BaseNaviWidget();
 public:
     bool isActive();

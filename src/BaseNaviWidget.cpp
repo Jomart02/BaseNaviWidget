@@ -3,7 +3,9 @@
 BaseNaviWidget::BaseNaviWidget(QWidget *parent) : QWidget(parent),timer(new QTimer(this)){
     connect(timer, &QTimer::timeout, this, &BaseNaviWidget::onTimeout);
 }
-
+BaseNaviWidget::BaseNaviWidget(int timerInterval ,QWidget *parent ){
+    if(timerInterval > 10 ) tickInterval = timerInterval;
+}
 BaseNaviWidget::~BaseNaviWidget(){
 
 }
