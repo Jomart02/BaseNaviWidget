@@ -27,3 +27,4 @@ void BaseNaviWidget::onTimeout(){
     QStringList data = getNavigationData();
     if(!data.empty()) sendData(data);
 }
+void BaseNaviWidget::setPos(double lat, double lon){}

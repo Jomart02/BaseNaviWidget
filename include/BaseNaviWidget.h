@@ -16,7 +16,7 @@ class BASENAVIWIDGET_EXPORT BaseNaviWidget : public QWidget
     Q_OBJECT
 public:
     explicit BaseNaviWidget(QWidget *parent = nullptr);
-    explicit BaseNaviWidget(int timerInterval = 1000,QWidget *parent = nullptr);
+    explicit BaseNaviWidget(int timerInterval,QWidget *parent = nullptr);
     ~BaseNaviWidget();
 public:
     bool isActive();
@@ -33,6 +33,8 @@ public:
     /// @brief Описание плагина 
     /// @return QString 
     virtual QString description() const = 0;
+public slots:
+    virtual void setPos(double lat, double lon);
 signals:
     void sendData(QStringList data);
 protected slots:
