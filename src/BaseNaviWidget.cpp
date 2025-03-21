@@ -31,7 +31,7 @@ void BaseNaviWidget::onTimeout(){
 }
 void BaseNaviWidget::setPos(double lat, double lon){}
 
-QString getRetranslatePref(QString retranslatepr){
+QString BaseNaviWidget::getRetranslatePref(QString retranslatepr){
     return QString();
 }
 
