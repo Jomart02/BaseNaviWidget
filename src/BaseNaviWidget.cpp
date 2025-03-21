@@ -1,5 +1,5 @@
 #include "BaseNaviWidget.h"
-
+#include <QEvent>
 BaseNaviWidget::BaseNaviWidget(QWidget *parent) : QWidget(parent),timer(new QTimer(this)){
     connect(timer, &QTimer::timeout, this, &BaseNaviWidget::onTimeout);
 }
@@ -28,3 +28,12 @@ void BaseNaviWidget::onTimeout(){
     if(!data.empty()) sendData(data);
 }
 void BaseNaviWidget::setPos(double lat, double lon){}
+
+void BaseNaviWidget::changeEvent(QEvent *event) {
+    if (event->type() == QEvent::LanguageChange) {
+        retranslate();
+    }
+    QWidget::changeEvent(event);
+}
+
+void BaseNaviWidget::retranslate(){}

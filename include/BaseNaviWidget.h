@@ -41,6 +41,9 @@ protected slots:
     virtual QStringList getNavigationData() = 0;
 private slots:
     void onTimeout();
+protected:
+    void changeEvent(QEvent *event) override;
+    virtual void retranslate();
 protected:  
     int tickInterval = 1000;
 private:
