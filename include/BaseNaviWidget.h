@@ -43,14 +43,11 @@ protected slots:
     virtual QStringList getNavigationData() = 0;
 private slots:
     void onTimeout();
-protected:
-    virtual QString getRetranslatePref(QString retranslatepr);
-    virtual void retranslate();
+
 protected:  
     int tickInterval = 1000;
 private:
     QTimer *timer = nullptr;
-    QTranslator *translator;
 };
 
 // Объявляем интерфейс для плагинов
