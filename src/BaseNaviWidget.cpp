@@ -31,6 +31,7 @@ void BaseNaviWidget::onTimeout(){
 }
 void BaseNaviWidget::setPos(double lat, double lon){}
 
+void BaseNaviWidget::setRetranslatePref(QString retranslatepr){}
 
 void BaseNaviWidget::setRetranslate(QString retranslateName){
     if (qApp->removeTranslator(translator)) {
