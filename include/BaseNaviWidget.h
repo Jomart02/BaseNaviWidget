@@ -36,7 +36,7 @@ public:
     virtual QString description() const = 0;
 public slots:
     virtual void setPos(double lat, double lon);
-    virtual void setRetranslatePref(QString retranslatepr);
+    void setRetranslate(QString retranslateName);    
 signals:
     void sendData(QStringList data);
 protected slots:
@@ -44,7 +44,7 @@ protected slots:
 private slots:
     void onTimeout();
 protected:
-    void setRetranslate(QString retranslateName);    
+    virtual QString getRetranslatePref(QString retranslatepr);
     virtual void retranslate();
 protected:  
     int tickInterval = 1000;

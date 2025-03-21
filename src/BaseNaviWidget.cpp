@@ -31,13 +31,15 @@ void BaseNaviWidget::onTimeout(){
 }
 void BaseNaviWidget::setPos(double lat, double lon){}
 
-void BaseNaviWidget::setRetranslatePref(QString retranslatepr){}
+QString getRetranslatePref(QString retranslatepr){
+    return QString();
+}
 
 void BaseNaviWidget::setRetranslate(QString retranslateName){
     if (qApp->removeTranslator(translator)) {
         qDebug() << "Removed previous translator";
     }
-
+    QString name = getRetranslatePref(retranslateName);
     // Загружаем новый перевод
     if (translator->load(retranslateName)) {
         if (qApp->installTranslator(translator)) {
