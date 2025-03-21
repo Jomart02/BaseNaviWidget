@@ -46,8 +46,11 @@ private slots:
 
 protected:  
     int tickInterval = 1000;
+    virtual QString getRetranslateName(QString retranslateName);
+    virtual void retranslate();
 private:
     QTimer *timer = nullptr;
+    QTranslator * translator;
 };
 
 // Объявляем интерфейс для плагинов
