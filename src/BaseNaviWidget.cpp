@@ -1,6 +1,8 @@
 #include "BaseNaviWidget.h"
 #include <QEvent>
-BaseNaviWidget::BaseNaviWidget(QWidget *parent) : QWidget(parent),timer(new QTimer(this)){
+#include <qapplication.h>
+BaseNaviWidget::BaseNaviWidget(QWidget *parent) : QWidget(parent),timer(new QTimer(this)),
+translator(new QTranslator(this)){
     connect(timer, &QTimer::timeout, this, &BaseNaviWidget::onTimeout);
 }
 BaseNaviWidget::BaseNaviWidget(int timerInterval ,QWidget *parent ) : BaseNaviWidget(parent){
@@ -29,11 +31,23 @@ void BaseNaviWidget::onTimeout(){
 }
 void BaseNaviWidget::setPos(double lat, double lon){}
 
-void BaseNaviWidget::changeEvent(QEvent *event) {
-    if (event->type() == QEvent::LanguageChange) {
-        retranslate();
+
+void BaseNaviWidget::setRetranslate(QString retranslateName){
+    if (qApp->removeTranslator(translator)) {
+        qDebug() << "Removed previous translator";
     }
-    QWidget::changeEvent(event);
+
+    // Загружаем новый перевод
+    if (translator->load(retranslateName)) {
+        if (qApp->installTranslator(translator)) {
+            qDebug() << "Installed translator for" << retranslateName;
+            retranslate();
+        } else {
+            qDebug() << "Failed to install translator for" << retranslateName;
+        }
+    } else {
+        qDebug() << "Failed to load translation file for" << retranslateName;
+    }
 }
 
 void BaseNaviWidget::retranslate(){}

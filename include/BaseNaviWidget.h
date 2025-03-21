@@ -4,6 +4,7 @@
 #include <QtPlugin>
 #include <QTimer>
 #include <nmea.h>
+#include <QTranslator>
 
 #ifdef BASENAVIWIDGET_LIBRARY
 #define BASENAVIWIDGET_EXPORT Q_DECL_EXPORT
@@ -35,6 +36,7 @@ public:
     virtual QString description() const = 0;
 public slots:
     virtual void setPos(double lat, double lon);
+    void setRetranslate(QString retranslateName);
 signals:
     void sendData(QStringList data);
 protected slots:
@@ -42,12 +44,12 @@ protected slots:
 private slots:
     void onTimeout();
 protected:
-    void changeEvent(QEvent *event) override;
     virtual void retranslate();
 protected:  
     int tickInterval = 1000;
 private:
     QTimer *timer = nullptr;
+    QTranslator *translator;
 };
 
 // Объявляем интерфейс для плагинов
