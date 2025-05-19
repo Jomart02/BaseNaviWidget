@@ -20,11 +20,11 @@ public:
     explicit BaseNaviWidget(int timerInterval,QWidget *parent = nullptr);
     ~BaseNaviWidget();
 public:
-    bool isActive();
+    virtual bool isActive();
     /// @brief Запуск отправки данных
-    void startSend();
+    virtual void startSend();
     /// @brief Остановка оправки данных
-    void stopSend();
+    virtual void stopSend();
     /// @brief Иконка плагина
     /// @return QIcon 
     virtual QIcon icon() const = 0;
