@@ -14,9 +14,11 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 set(HDRS
     ./include/BaseNaviWidget.h
+    ./include/NaviPluginInterface
 )
 set(SRC
     ./src/BaseNaviWidget.cpp
+    ./src/NaviPluginInterface.cpp
 )
 
 find_package(Qt6 COMPONENTS Widgets REQUIRED)
@@ -24,8 +26,8 @@ find_package(Qt6 COMPONENTS Widgets REQUIRED)
 message("Building " ${TARGET})
 
 add_library(${PROJECT_NAME} SHARED ${HDRS} ${SRC})
-# Определяем макрос BASENAVIWIDGET_LIBRARY только при компиляции библиотеки
-target_compile_definitions(${PROJECT_NAME} PRIVATE BASENAVIWIDGET_LIBRARY)
+# Определяем макрос Q_EXPORT_LIB только при компиляции библиотеки
+target_compile_definitions(${PROJECT_NAME} PRIVATE Q_EXPORT_LIB)
 target_link_libraries(${PROJECT_NAME} Qt6::Widgets)
 
 # Указываем, что заголовочные файлы библиотеки должны быть доступны для других проектов

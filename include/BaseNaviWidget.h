@@ -5,13 +5,13 @@
 #include <QTimer>
 #include <QTranslator>
 
-#ifdef BASENAVIWIDGET_LIBRARY
-#define BASENAVIWIDGET_EXPORT Q_DECL_EXPORT
+#ifdef Q_EXPORT_LIB
+#define Q_EXPORT Q_DECL_EXPORT
 #else
-#define BASENAVIWIDGET_EXPORT Q_DECL_IMPORT
+#define Q_EXPORT Q_DECL_IMPORT
 #endif
 
-class BASENAVIWIDGET_EXPORT BaseNaviWidget : public QWidget
+class Q_EXPORT BaseNaviWidget : public QWidget
 {
     Q_OBJECT
 public:
