@@ -3,7 +3,6 @@
 #include <QWidget>
 #include <QtPlugin>
 #include <QTimer>
-#include <nmea.h>
 #include <QTranslator>
 
 #ifdef BASENAVIWIDGET_LIBRARY
